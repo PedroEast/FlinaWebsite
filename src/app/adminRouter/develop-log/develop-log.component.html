@@ -1,0 +1,63 @@
+
+<div class="actions">
+    <mat-form-field class="filter">
+      <input matInput type="text"  placeholder="filter" (keyup)="applyFilter($event.target.value)">
+    </mat-form-field>
+    
+    <button mat-button (click)='insert()'>新增</button>
+    <button id="updateNullBtn" [disabled]="multi" mat-button matTooltip="禁止多行修改" (click)="update(null)">修改</button>
+</div>
+    
+<table id="table" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)"></tr>
+
+
+    <ng-container matColumnDef="select">
+    <th mat-header-cell *matHeaderCellDef>
+        <mat-checkbox   (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"
+        [indeterminate]="selection.hasValue() && !isAllSelected()">
+        </mat-checkbox>
+    </th>
+    <td mat-cell *matCellDef="let row">
+        <mat-checkbox   (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)">
+        </mat-checkbox>
+    </td>
+    </ng-container>
+    
+    <ng-container *ngFor="let columnName of dataColumns" [matColumnDef]="columnName">
+    <th mat-header-cell *matHeaderCellDef>{{columnName}}</th>
+    <td mat-cell *matCellDef="let element">
+        <div *ngIf="!isDate(element[columnName])">{{element[columnName]}}</div>
+        <div *ngIf="isDate(element[columnName])">{{element[columnName] | date: "yyyy-MM-dd"}}</div>
+    </td>
+    </ng-container>
+</table>
+    
+
+<div id="develop-panel">
+    <mat-accordion *ngIf="tableData">
+        
+        <mat-expansion-panel *ngFor="let developLog of tableData">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+                {{developLog.target}}
+            </mat-panel-title>
+            <mat-panel-description>
+                <span>
+                  <mat-icon (click)="copyToClip(developLog.target);$event.stopPropagation()">content_copy</mat-icon>
+                </span>
+              </mat-panel-description>
+          </mat-expansion-panel-header>
+          <mat-content>
+            <p *ngFor="let column of dataColumns" >{{column + ":" + developLog[column]}}</p>        
+          </mat-content>
+          <mat-action-row>
+            <button [disabled]="multi" mat-button (click)="update(developLog)">修改</button>
+          </mat-action-row>
+        </mat-expansion-panel>  
+    </mat-accordion>
+    
+</div> 
+
+<app-progress-circle [isShow]="isProgressCircleShow"></app-progress-circle>

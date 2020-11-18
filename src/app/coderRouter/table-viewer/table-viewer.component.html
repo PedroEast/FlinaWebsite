@@ -1,0 +1,76 @@
+<div id="table-viewer">
+    <mat-accordion *ngIf="tables">
+        <mat-expansion-panel (opened)="whenPanelOpen()">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                  {{newTable.tableName}}
+                </mat-panel-title>
+                <mat-panel-description>
+                  <p *ngIf="newTable.columns.length<4"><span *ngFor="let column of newTable.columns">{{column.field}}&nbsp;!&nbsp;</span></p>
+                  <p *ngIf="newTable.columns.length>=4">
+                    <span>{{newTable.columns[0].field}}&nbsp;!&nbsp;</span>
+                    <span>{{newTable.columns[1].field}}&nbsp;!&nbsp;</span>
+                    <span>{{newTable.columns[2].field}}&nbsp;!&nbsp;</span>
+                    <span>...&nbsp;!&nbsp;</span>
+                  </p>
+                  <span>
+                    <mat-icon (click)="copyToClip(newTable.tableName);$event.stopPropagation()">content_copy</mat-icon>
+                  </span>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <mat-content>
+      
+                <mat-icon class="edit" (click)="tabIsEditModel(newTable.createTable)">edit</mat-icon>
+                <p *ngIf="newTable.createTable && !isEditModel" >{{newTable.createTable}}</p>
+        
+                <div>
+                    <!-- <mat-icon [class.to-left-30px]="isEditModel" class="play" (click)="runSqlNative(sqlInputFormControl.value)">play_arrow</mat-icon> -->
+                    <mat-form-field *ngIf="newTable.createTable && isEditModel">
+                        <textarea [formControl]="sqlInputFormControl" matInput
+                            cdkTextareaAutosize cdkAutosizeMinRows="6"
+                            placeholder="sql native"
+                            (keyup)="sqlInputChange($event)"
+                            ></textarea>
+                            
+                    </mat-form-field>
+                </div>
+            </mat-content>
+      
+            <mat-action-row>
+              <button mat-flat-button (click)="generateFile(sqlInputFormControl.value)">生成代码</button>
+            </mat-action-row>
+          </mat-expansion-panel> 
+        
+        <mat-expansion-panel (opened)="whenPanelOpen()" *ngFor="let table of tables">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+                {{table.tableName}}
+              </mat-panel-title>
+              <mat-panel-description>
+                <p *ngIf="table.columns.length<4"><span *ngFor="let column of table.columns">{{column.field}}&nbsp;!&nbsp;</span></p>
+                <p *ngIf="table.columns.length>=4">
+                  <span>{{table.columns[0].field}}&nbsp;!&nbsp;</span>
+                  <span>{{table.columns[1].field}}&nbsp;!&nbsp;</span>
+                  <span>{{table.columns[2].field}}&nbsp;!&nbsp;</span>
+                  <span>...&nbsp;!&nbsp;</span>
+                </p>
+                <span>
+                  <mat-icon (click)="copyToClip(table.tableName);$event.stopPropagation()">content_copy</mat-icon>
+                </span>
+              </mat-panel-description>
+          </mat-expansion-panel-header>
+          <mat-content>
+            <p *ngIf="table.createTable && !isEditModel" >{{table.createTable}}</p>        
+          </mat-content>
+          <mat-action-row>
+            <button mat-flat-button color="warn" (click)="dropBy(table.tableName)">删除此表</button>
+            <button mat-flat-button (click)="findAllBy(table)">查看数据</button>
+            <button mat-flat-button (click)="generateFile(table.createTable)">生成代码</button>
+          </mat-action-row>
+        </mat-expansion-panel>  
+    </mat-accordion>
+    
+</div> 
+
+
+<app-progress-circle [isShow]="isProgressCircleShow"></app-progress-circle>

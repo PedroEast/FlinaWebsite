@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>人员管理</h1>
+<div mat-dialog-content>
+    <form [formGroup]="userForm">
+        <p>{{userForm.get("username").value}}</p>
+        <app-select [input]="userForm.get('roles')" [enum]="roleEnum"></app-select>
+        <app-select [input]="userForm.get('level')" [enum]="levelEnum"></app-select>
+        <mat-divider></mat-divider>
+    </form>
+</div>
+<div mat-dialog-actions class="actions">
+  <button mat-button (click)="onNoClick()">否</button>
+  <button mat-flat-button color="accent" [mat-dialog-close]="userForm.getRawValue()" cdkFocusInitial>是</button>
+</div>

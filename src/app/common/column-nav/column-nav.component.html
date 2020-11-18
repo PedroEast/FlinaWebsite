@@ -1,0 +1,23 @@
+
+<div id="placeholder"></div>
+<div class="pc-sidebar">
+    <app-primary-button buttonStr="富文本编辑器" (click)="btnClick()"></app-primary-button>
+    <a *ngIf="!routes">请通过routes命名纵向导航器</a>
+    <div *ngFor="let route of routes">
+        <a  [routerLink]="route.linkRouter">{{route.linkName}}</a>
+        <mat-divider></mat-divider>
+    </div>
+</div>
+
+<div class="phone-sidebar" [class.right-sidebar]="isShowPhoneSidebar">
+   <app-user-block (click)="listItemClick($event)"></app-user-block>
+    <ul>
+        <li *ngFor="let route of routes" (click)="listItemClick($event)">
+            <a  [routerLink]="route.linkRouter">
+                <span class="icon"><i class="{{route.linkIcon}}"></i></span>
+                <span class="text">{{route.linkName}}</span>
+                
+            </a>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,6 @@
+
+<app-user-block (click)="routerUser()"></app-user-block>
+<mat-divider></mat-divider>
+<div *ngFor="let route of routes">
+    <app-router-block [route]="route"></app-router-block>
+</div>

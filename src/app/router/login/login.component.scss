@@ -1,0 +1,180 @@
+@import "src/styles.scss";
+
+
+.form {
+    position: fixed;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 40px;
+    height: 100%;
+    width: 50%;
+    color: $white;
+    min-width: 350px;
+    h1{
+        font-weight: bold;
+        margin: 0;
+    }
+    
+    .social-container{
+        margin: 20px 0;
+        a{
+            border: 1px solid $white;
+            border-radius: 50%;
+            display: inline-block;
+            height: 40px;
+            width :40px;
+            margin: 0 5px;
+        }
+    }
+
+    span{
+        a{
+            height: 24px;
+            line-height: 24px;
+            margin: 8px 0;
+            color: $link;
+            font-family: Roboto, "Helvetica Neue", sans-serif;
+            font-size: 14px;
+        }
+    }
+    
+    input {
+        background-color: $transparent;
+        color: $white;
+        border: 2px solid $white;
+        border-radius: 4px 20px 20px 4px;
+        outline: none;
+        padding: 12px 15px;
+        margin: 8px 0;
+        width: 60%;
+    }
+    .row {
+        width: 60%;
+        margin: 8px 0;
+        @include flex;
+        flex-direction: row;
+        justify-content: space-between;
+        mat-checkbox {
+            ::ng-deep .mat-checkbox-frame{
+                border-color: $white;
+            }
+        }
+    }
+    
+    
+
+    button {
+        width: 60%;
+        margin: 8px 0;
+        padding: 12px 15px;
+
+        border-radius: 4px 25px 25px 4px;
+        border: 2px solid $white;
+        background-color: $transparent;
+        color: $white;
+        font-size: 16px;
+        font-weight: 600;
+        letter-spacing: 1px;
+    }
+        
+    button:active {
+        transform: scale(0.95);
+    }
+    
+    button:focus {
+        outline: none;
+    }
+
+}
+
+#beian{
+    position: fixed;
+    z-index: 1;
+    left: 20px;
+    bottom: 20px;
+    cursor: pointer;
+}
+#copy{
+    position: fixed;
+    z-index: 1;
+    left: 150px;
+    bottom: 20px;
+    cursor: pointer;
+}
+
+.bg-mock {
+    position: fixed;
+    z-index: 0;
+    top: 0;
+    right: 0;
+    left: 0;
+    background-color: $black-mask;
+    width: 100vw;
+    height: 100vh;
+}
+
+.bg-img {
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    bottom: 0;  
+    background-image: url("http://www.dongqinglin.cn/assets/bg_4.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100vw;
+}
+
+.tip {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: $black-mask;
+    text-align: center;
+    z-index: 6;
+    color: $white;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0px 31px;
+    text-align: justify;
+    p {
+        margin-top: 10px;
+    }
+}
+
+
+@media screen and (max-width: 480px) {
+    .form { 
+        width: 100%;
+        input {
+            width: 80%;
+        }
+        .row {
+            width: 80%;
+            margin: 8px 0;
+        }
+    
+    
+        button {
+            width: 80%;
+        }  
+    }
+
+    #beian{ 
+        left: 20px;
+        bottom: 40px;
+        
+    }
+    #copy{
+        left: 20px;
+        bottom: 20px;
+        
+    }
+    .bg-img {
+        background-size: cover;    
+    }   
+}

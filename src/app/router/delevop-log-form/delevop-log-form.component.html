@@ -1,0 +1,54 @@
+<h1 mat-dialog-title>开发日志</h1>
+<div mat-dialog-content>
+    <form [formGroup]="developLogForm">
+        <div class="input-with-clear">
+            <input type="text" placeholder="对象" class="input-text" [formControl]="developLogForm.get('target')">
+            <button class="clear-btn" mat-icon-button (click)="clear(developLogForm.get('target'))">
+                <span><i class="fas fa-times-circle"></i></span>
+            </button>
+        </div>
+        <div class="input-with-clear">
+            <input type="text" placeholder="备注" class="input-text" [formControl]="developLogForm.get('notice')">
+            <button class="clear-btn" mat-icon-button (click)="clear(developLogForm.get('notice'))">
+                <span><i class="fas fa-times-circle"></i></span>
+            </button>
+        </div>
+        <div class="input-with-clear">
+            <input type="text" placeholder="分辨率" class="input-text" [formControl]="developLogForm.get('resolution')">
+        </div>
+        <div class="input-with-clear">
+            <input type="text" placeholder="浏览器" class="input-text" [formControl]="developLogForm.get('browser')">
+            <button class="clear-btn" mat-icon-button (click)="clear(developLogForm.get('browser'))">
+                <span><i class="fas fa-times-circle"></i></span>
+            </button>
+        </div>
+        <div class="input-with-clear">
+            <input type="text" placeholder="网路" class="input-text" [formControl]="developLogForm.get('network')">
+            <button class="clear-btn" mat-icon-button (click)="clear(developLogForm.get('network'))">
+                <span><i class="fas fa-times-circle"></i></span>
+            </button>
+        </div>
+        <div class="input-with-clear">
+            <input type="text" placeholder="角色" class="input-text" [formControl]="developLogForm.get('roles')">
+        </div>
+        <div class="input-with-clear">
+            <input type="text" placeholder="用户名" class="input-text" [formControl]="developLogForm.get('username')">
+        </div>
+        <div class="input-with-options">
+            <mat-select placeholder="古体" id="poetry-style" [formControl]="developLogForm.get('device')">
+                <mat-option value="PC">个人电脑PC</mat-option>
+                <mat-option value="MAC">苹果电脑MACBOOK</mat-option>  
+                <mat-option value="IPhone">IPhone</mat-option>  
+                <mat-option value="Android">Android</mat-option>  
+            </mat-select>
+        </div>
+        <mat-divider></mat-divider>
+       
+    </form>
+</div>
+<div mat-dialog-actions class="actions">
+  <button mat-button (click)="onNoClick()">否</button>
+    <button mat-flat-button [mat-dialog-close]="developLogForm.getRawValue()" cdkFocusInitial>
+        <span><i class="fas fa-paper-plane"></i></span>
+    </button>
+</div>

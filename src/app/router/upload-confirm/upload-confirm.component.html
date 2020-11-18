@@ -1,0 +1,17 @@
+<h1 mat-dialog-title>{{data.title}}</h1>
+<div mat-dialog-content id="container">
+    <mat-icon id="uploadIcon" matRipple  color="accent"  aria-label="上传"  (click)="upload()">cloud_upload</mat-icon>
+    <input type="file" #filesMulti id="file" name="file" (change)="fileEdit()" [accept]="inputFileType" multiple>
+    <div id="file-list">
+      <div *ngFor="let tempfile of files; let i=index;">{{tempfile.name}}
+        <button mat-icon-button (click)="deleteFile(i)">
+          <mat-icon aria-label="删除">delete_forever</mat-icon>
+        </button>
+      </div> 
+    </div>
+</div>
+
+<div mat-dialog-actions class="actions">
+  <button mat-button (click)="onNoClick()">否</button>
+  <button mat-flat-button color="primary" [mat-dialog-close]="files" cdkFocusInitial>是</button>
+</div>

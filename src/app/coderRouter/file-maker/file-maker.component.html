@@ -1,0 +1,72 @@
+<mat-card>
+    <mat-card-header>
+      <mat-card-title>代码/生成</mat-card-title>
+      <mat-card-subtitle>code/auto</mat-card-subtitle>
+      <div>
+        <button mat-icon-button (click)="stepper.reset()">
+          <span><i class="fas fa-sync-alt"></i></span>
+        </button>
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+            <img src="http://dongqinglin.cn/assets/menu.svg" alt="更多">
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="showHelp()">
+            <span><i class="fas fa-question-circle"></i></span>
+            <span>帮助</span>
+          </button>
+          <button mat-menu-item (click)="showEmail()">
+            <span><i class="fas fa-envelope"></i></span>
+            <span>联系</span>
+          </button>
+        </mat-menu>
+      </div>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+      <mat-vertical-stepper linear="true" #stepper>
+        <mat-step [stepControl]="tableFormGroup">
+          <form [formGroup]="tableFormGroup">
+            <ng-template matStepLabel>请填写表名</ng-template>
+            
+            <mat-form-field>
+              <input matInput placeholder="建表语句" formControlName="createTable" required>
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput placeholder="数据表名" formControlName="tableName" required>
+            </mat-form-field>
+            <mat-slide-toggle formControlName="sourceSelect" (change)="sourceSelect(tableFormGroup.get('sourceSelect').value)">部署模式</mat-slide-toggle>
+            <div>
+                <button mat-button matStepperNext>下一步</button>
+                <button *ngIf="!tableFormGroup.get('sourceSelect').value" mat-button routerLink="/coder/table-viewer">新建建表语句</button>
+                <button *ngIf="tableFormGroup.get('sourceSelect').value" mat-button routerLink="/coder/table-viewer">查看所有数据表</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="fullStackFormGroup">
+          <form [formGroup]="fullStackFormGroup">
+            <ng-template matStepLabel>请选择技术栈</ng-template>               
+              <div>
+                <mat-checkbox *ngFor="let solution of fullStackSolutions" [formControlName]="solution.solutionId" (change)="select()">
+                  {{solution.frontEndApi + '->' + solution.backEndApi + '->' + solution.backEndSqlApi}}
+                </mat-checkbox>
+           
+              </div> 
+            <div>
+              <button mat-button matStepperPrevious>上一步</button>
+              <button mat-button matStepperNext>下一步</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>开始生成</ng-template>
+          <div>
+            <button mat-button matStepperPrevious>上一步</button>
+            <button mat-button color="primary" (click)="viewGernerateFile()">预览</button>
+          </div>
+        </mat-step>
+      </mat-vertical-stepper>
+    </mat-card-content>
+  </mat-card>
+  
+  
+  

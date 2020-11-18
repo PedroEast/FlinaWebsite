@@ -1,0 +1,20 @@
+@import "src/styles.scss";
+
+#main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    h1{
+        font-size: 4em;
+        display: block;
+        line-height: 1em;
+        margin-top: 3em;
+    }
+    h2{
+        margin-top: -7px;
+    }
+    app-primary-button{
+
+    }
+}

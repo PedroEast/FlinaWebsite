@@ -1,0 +1,17 @@
+@import "src/styles.scss";
+
+.edit-blocks {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    .edit-block {
+        height: 100px;
+        background-color: $seventh;
+        border-radius: 10px;
+        font-size: 17px;
+        text-align: center;
+        line-height: 100px;
+        margin: 10px 5px;
+        cursor: pointer;
+    }
+}

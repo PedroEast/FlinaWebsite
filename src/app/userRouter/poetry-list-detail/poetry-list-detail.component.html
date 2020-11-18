@@ -1,0 +1,20 @@
+<div class="poetry-block">
+    <div class="poetry-info" *ngIf="data">
+        <h2 class="poetry-title">{{data.title}}</h2>
+        <mat-divider></mat-divider>
+        <p class="poetry-status">
+            <span *ngIf="!isModify(data.latestModifyTime)" class="poetry-time">{{data.createdTime | date: 'yyyy-MM-dd'}}</span>
+            <span *ngIf="isModify(data.latestModifyTime)" class="poetry-time">{{data.latestModifyTime | date: 'yyyy-MM-dd'}}</span>
+            <span>{{data.style}}</span>
+            <span>{{data.enable ? "可修改" : "不可修改"}}</span>
+            <span>{{data.submit ? "已投稿" : "未投稿"}}</span>
+        </p>
+        <mat-divider></mat-divider> 
+    </div>
+    
+    <div id="poetry-content"></div>
+</div>
+
+<app-circle-button *ngIf="data.enable" buttonStr="fas fa-pen-nib" (click)="modify()"></app-circle-button>
+<app-circle-button *ngIf="data.enable" bottom="120px" buttonStr="fas fa-trash-alt" (click)="delete()"></app-circle-button>
+

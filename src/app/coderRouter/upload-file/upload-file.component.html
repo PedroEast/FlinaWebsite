@@ -1,0 +1,31 @@
+<div class="container">
+    <h1>文件上传</h1>
+    <input #filesMulti multiple
+        type="file" id="file" name="file" 
+        (change)="onChangeSelectFiles()" 
+        [accept]="inputFileType">
+
+    <div id="icon">
+        <button mat-icon-button (click)="onClickFilePicker()">
+            <span><i class="fas fa-cloud-upload-alt"></i></span>
+        </button>
+    </div>
+
+    <mat-form-field id="input">
+        <input matInput placeholder="target folder" value="" [(ngModel)]="targetFolder">
+    </mat-form-field>
+
+    <div id="file-list">
+        <div *ngFor="let tempfile of files; let i=index;">
+            <span>{{tempfile.name}}</span>
+            <button mat-icon-button (click)="onClickdeleteFile(i)">
+                <span><i class="fas fa-trash-alt"></i></span>
+                
+            </button>
+        </div> 
+    </div>
+
+    <div id="action">
+        <button [disabled]="isAvaliableUploadbtn" mat-flat-button color="primary" cdkFocusInitial (click)="onClickUpload()">上传</button>
+    </div>
+</div>

@@ -1,0 +1,62 @@
+<div  class="toolbar" [class.toolbar-flow]="isToolBarFlow">
+    <button class="btn" mat-icon-button (click)="toolbarFlow($event)" matTooltip="浮动面板">
+        <span><i class="fas fa-ellipsis-v"></i></span>
+    </button>
+    <button class="btn" mat-icon-button (click)="undo($event)">
+        <span><i class="fas fa-undo"></i></span>
+    </button>
+    <button class="btn" mat-icon-button (click)="redo($event)">
+        <span><i class="fas fa-redo"></i></span>
+    </button>
+    <button class="btn" mat-icon-button (click)="alignLeft($event)">
+        <span><i class="fas fa-align-left"></i></span>
+    </button>
+    <button class="btn" mat-icon-button (click)="alignCenter($event)">
+        <span><i class="fas fa-align-center"></i></span>
+    </button>
+    <button class="btn" mat-icon-button (click)="alignRight($event)">
+        <span><i class="fas fa-align-right"></i></span>
+    </button>
+    <button class="btn" mat-icon-button (click)="bold($event)">
+        <span><i class="fas fa-bold"></i></span>
+    </button>
+    <button class="btn" mat-icon-button (click)="italic($event)">
+        <span><i class="fas fa-italic"></i></span>
+    </button>
+    <button class="btn" mat-icon-button (click)="underlined($event)">
+        <span><i class="fas fa-underline"></i></span>
+    </button>
+    <button class="btn" mat-icon-button [matMenuTriggerFor]="lineHeight">
+        <span><img src="http://dongqinglin.cn/assets/format_line_spacing.svg" alt=""></span>
+    </button>
+    <mat-menu #lineHeight="matMenu">
+        <button mat-menu-item (click)="lineHeight1($event)">
+          <span>1</span>
+        </button>
+        <button mat-menu-item (click)="lineHeight15($event)">
+          <span>1.5</span>
+        </button>
+        <button mat-menu-item (click)="lineHeight2($event)">
+          <span>2</span>
+        </button>
+      </mat-menu>
+    <button class="btn" mat-icon-button (click)="removeFormat($event)">
+        <span><i class="fas fa-remove-format"></i></span>
+    </button>
+    <button class="btn" mat-icon-button (click)="selectAll($event)">
+        <span><i class="fas fa-mouse-pointer"></i></span>
+    </button>
+    
+</div>
+<div id="input-text-area-block" >
+    <div id="input-text-area" contenteditable>
+       <div><br></div>
+       <div><br></div>
+       <div><br></div>
+       <div><br></div>
+       <div><br></div>
+       <div><br></div>
+       <div><br></div>
+       
+    </div>
+</div>

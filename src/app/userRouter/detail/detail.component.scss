@@ -1,0 +1,36 @@
+@import "src/styles.scss";
+.container{
+    padding: 15px;
+    .input-with-clear{
+        position: relative;
+        display: flex;
+        label {
+            min-width: 80px;
+            height: 60px;
+            line-height: 60px;
+            font-weight: 600;
+        }
+        input {
+            background-color: $transparent;
+            color: $black;
+            border: 2px solid $black;
+            border-radius: 4px 20px 20px 4px;
+            outline: none;
+            padding: 12px 15px;
+            margin: 8px 0;
+            width: 100%;
+            font: 400 14px/20px Roboto, "Helvetica Neue", sans-serif;
+        }
+        button{
+            position: absolute;
+            top: 0;
+            right: -6px;
+            width: 60px;
+            height: 60px;
+            font-size: 17px;
+        }
+    }
+    button{
+        width: 100%;
+    }
+}

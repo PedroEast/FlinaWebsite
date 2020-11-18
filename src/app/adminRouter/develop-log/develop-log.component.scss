@@ -1,0 +1,62 @@
+@import "src/styles.scss";
+
+.actions{
+    background-color: white;
+    color: $card-bg;
+    padding: 0 1em;
+}
+table{
+    width: 100%;
+    border-radius: 4px;
+}
+#develop-panel{
+    display: none;
+}
+
+
+
+@media screen and (max-width: 480px) {
+    #table {
+        display: none !important;
+       
+    }
+    #updateNullBtn {
+        display: none !important;
+    }
+    #develop-panel{
+        display: block !important;
+        mat-accordion{
+
+            mat-panel-title{
+                height: auto;
+                width: auto;
+               
+                line-height: 100;
+            }
+        
+            mat-panel-description{
+                flex-basis:0;
+                @include flex;
+                flex-direction: row;
+                justify-content: flex-end;
+                align-items: center;
+            }
+        
+            mat-content {
+                p{
+        
+                    letter-spacing: normal;
+                    word-spacing: normal;
+                    text-transform: none;
+                    text-indent: 0px;
+                    text-shadow: none;
+                    display: block;
+                    text-align: start;
+                    white-space: pre-wrap;
+                    overflow-wrap: break-word;
+                }
+            }
+        }
+    }
+}
+

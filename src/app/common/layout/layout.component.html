@@ -1,0 +1,10 @@
+<app-header (navClick)="hideSideBar()" (menuClick)="menuClick()"></app-header>
+<div id="placeholder"></div>
+<div id="main">
+    <div class="nav">
+        <app-column-nav (setClose)="hideSideBar()" [isShowPhoneSidebar]="isShowPhoneSidebar" [routes]="columnNav"></app-column-nav>
+    </div>
+    <div class="right" (click)="hideSideBar()">
+        <router-outlet></router-outlet>
+    </div>
+</div>

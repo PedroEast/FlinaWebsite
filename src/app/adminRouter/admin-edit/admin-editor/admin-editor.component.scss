@@ -1,0 +1,87 @@
+@import "src/styles.scss";
+
+
+.poetry-block {
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+    padding: 15px;
+    .poetry-info {
+        .poetry-title{
+            margin: 0;
+        }
+
+        .poetry-status {
+            span {
+                margin-right: 5px;
+            }
+        }
+    }
+
+    #poetry-content {
+        margin-top: 10px;
+        font-size: 16px;
+    }
+
+}
+
+
+
+.admin-tool-bar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-self: center;
+    height: 50px;
+    background-color: $sixth;
+
+    span {
+        i {
+            font-size: 17px;
+        }
+    }
+
+    .back {
+        width: 15%;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+    }
+
+    .function{
+        width: 70%;
+        height: 100%;
+        display: flex;
+        justify-content: space-around;
+        div {
+            align-self: center;
+            height: 50px;
+            line-height: 50px;
+        }
+    }
+
+    .next {
+        width: 15%;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+    }
+}
+
+#set-score-tool-bar {
+    height: 200px;
+    flex-wrap: wrap;
+    .number-button {
+        width: 33.3%;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+
+    }
+}
+
+#set-style-tool-bar {
+    height: 50px;
+}

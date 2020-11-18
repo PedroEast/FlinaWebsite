@@ -1,0 +1,29 @@
+@import "src/styles.scss";
+
+.flow-chart {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    padding: 15px;
+    .flow-unit {
+        display: flex;
+        height: 60px;
+        align-items: center;
+        mat-form-field {
+            width: 128px;
+        }
+    
+        mat-slide-toggle {
+    
+        }
+        span {
+            i {
+                font-size: 20px
+            }
+        }
+    }
+    
+
+}

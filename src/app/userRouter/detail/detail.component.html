@@ -1,0 +1,17 @@
+<div class="container" *ngIf="user">
+    <div class="input-with-clear">
+        <label>用户名:</label>
+        <input type="text" placeholder="" class="input-text" [formControl]="userMetaForm.get('username')">
+    </div>
+    <div class="input-with-clear">
+        <label>邮箱:</label>
+        <input type="text" placeholder="" class="input-text" [formControl]="userMetaForm.get('email')">
+    </div>
+    <app-input [input]="userMetaForm.get('name')" lableStr="真实姓名"></app-input>
+    <app-input [input]="userMetaForm.get('studentId')" lableStr="学生卡号"></app-input>
+    <app-input [input]="userMetaForm.get('college')" lableStr="所属学院"></app-input>
+    <app-input [input]="userMetaForm.get('concat')" lableStr="手机号码"></app-input>
+
+    <app-primary-button buttonStr="确认" (click)="save()"></app-primary-button>
+    <button mat-flat-button color="warn" cdkFocusInitial (click)="signOut()">退出登陆</button>
+</div>

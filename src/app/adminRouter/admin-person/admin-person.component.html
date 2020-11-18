@@ -1,0 +1,31 @@
+
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th *ngFor="let item of tableHead">{{item}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let userView of tableData">
+                <td>{{userView.id}}</td>
+                <td>{{userView.name}}</td>
+                <td>{{userView.studentId}}</td>
+                <td>{{userView.concat}}</td>
+                <td>{{userView.email}}</td>
+                <td>{{userView.college}}</td>
+                <td>{{userView.roles== "ROLE_USER" ? "用户" : "管理员" }}</td>
+                <td>{{userView.level}}</td>
+                <td>{{userView.enable ? "是" : ""}}</td>
+                <td>
+                    <button mat-button color="accent" (click)="changeRoleAuth(userView)">权限</button>
+                    <button *ngIf="!userView.enable" mat-button color="accent" (click)="changeBlack(userView)">拉黑</button>
+                    <button *ngIf="userView.enable" mat-button color="accent" (click)="changeWhite(userView)">解禁</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<app-progress-circle [isShow]="isProgressCircleShow"></app-progress-circle>

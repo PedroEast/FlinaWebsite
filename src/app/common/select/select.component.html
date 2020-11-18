@@ -1,0 +1,7 @@
+<div>
+    <mat-select id="poetry-style" [formControl]="input">
+        <mat-option *ngIf="!input" value="1">请通过input初始化你的选择器</mat-option>
+        <mat-option *ngIf="!enum" value="1">请通过enum初始化你的选择器</mat-option>
+        <mat-option *ngFor="let item of enum" [value]="item">{{item}}</mat-option>  
+    </mat-select>
+</div>

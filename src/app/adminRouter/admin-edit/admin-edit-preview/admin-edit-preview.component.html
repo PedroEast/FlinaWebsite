@@ -1,0 +1,32 @@
+<div *ngIf="isEditPreviewShow" class="count">
+    <div *ngIf="!isEdit">
+        待分类总数
+        <span>{{datas.length}}</span>
+    </div>
+    <div *ngIf="!isEdit">
+        已分类总数
+        <span>{{classCount}}</span>
+    </div>
+    <div *ngIf="isEdit">
+        待审总数
+        <span>{{datas.length}}</span>
+    </div>
+    <div *ngIf="isEdit">
+        已审总数
+        <span>{{editCount}}</span>
+    </div>
+</div>
+<mat-divider></mat-divider>
+
+<div *ngIf="isEditPreviewShow" class="works-preview">
+    <div class="works-preview-block" *ngFor="let data of datas; let i = index" (click)="editWork($event, i)">
+        <div *ngIf="!isEdit">
+            {{data.editorId ? "1" : "0"}}
+        </div>
+        <div *ngIf="isEdit">
+            {{data.editorScore ? "1" : "0"}}
+        </div>
+    </div>
+</div>
+
+<app-admin-editor (over)="editOver()" *ngIf="!isEditPreviewShow" [scence]="scence" [datas]="datas" [index]="index"></app-admin-editor>

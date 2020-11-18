@@ -1,0 +1,7 @@
+<div>
+    <label *ngIf="lableStr">{{lableStr}}:</label>
+    <input type="text" placeholder="请输入" [formControl]="input">
+    <button *ngIf="input.value" matSuffix mat-icon-button aria-label="Clear" (click)="input.reset()">
+      <span><i class="fas fa-times-circle"></i></span>
+    </button>
+</div>

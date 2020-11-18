@@ -1,0 +1,19 @@
+
+<div class="other">
+    <form [formGroup]="poetryForm">
+        <app-input [input]="poetryForm.get('title')"></app-input>
+        <app-select [input]="poetryForm.get('style')" [enum]="styleEnum"></app-select>
+        <app-editor></app-editor>
+        <app-input [input]="userMetaForm.get('name')" lableStr="真实姓名"></app-input>
+        <app-input [input]="userMetaForm.get('studentId')" lableStr="学生卡号"></app-input>
+        <app-input [input]="userMetaForm.get('college')" lableStr="所属学院"></app-input>
+        <app-input [input]="userMetaForm.get('concat')" lableStr="手机号码"></app-input>
+        <div class="buttons">
+            <app-primary-button buttonStr="仅保存" (click)="save()"></app-primary-button>
+            <app-primary-button buttonStr="提交" (click)="submit()"></app-primary-button>
+        </div>
+        
+       
+    </form>
+</div>
+<app-progress-circle [isShow]="isProgressCircleShow"></app-progress-circle>

@@ -1,0 +1,77 @@
+
+<form [formGroup]="flowForm" class="flow-chart">
+    <app-primary-button buttonStr="开始"></app-primary-button>
+    <span><i class="fas fa-arrow-circle-down"></i></span>
+    <div class="flow-unit">
+        <mat-form-field>
+            <input matInput [matDatepicker]="start" placeholder="征稿开始日期" [formControl]="flowForm.get('startTime')" (change)="filterChange()">
+            <mat-datepicker-toggle matSuffix [for]="start"></mat-datepicker-toggle>
+            <mat-datepicker touchUi #start></mat-datepicker>
+        </mat-form-field>
+        <button mat-icon-button routerLink="/admin/admin-works" >
+            <span><i class="fas fa-external-link-square-alt"></i></span>
+        </button>
+    </div>
+    <span><i class="fas fa-arrow-circle-down"></i></span>
+    <div class="flow-unit">
+        <mat-form-field>
+            <input matInput [matDatepicker]="end" placeholder="征稿结束日期" [formControl]="flowForm.get('endTime')" (change)="filterChange()">
+            <mat-datepicker-toggle matSuffix [for]="end"></mat-datepicker-toggle>
+            <mat-datepicker touchUi #end></mat-datepicker>
+        </mat-form-field>
+        <button mat-icon-button routerLink="/admin/admin-works">
+            <span><i class="fas fa-external-link-square-alt"></i></span>
+        </button>
+    </div>
+    <span><i class="fas fa-arrow-circle-down"></i></span>
+    <div class="flow-unit">
+        <mat-slide-toggle (change)="filterChange()" [formControl]="flowForm.get('selectStatus')">选定待审作品</mat-slide-toggle>
+        <button mat-icon-button routerLink="/admin/admin-works">
+            <span><i class="fas fa-external-link-square-alt"></i></span>
+        </button>
+    </div>
+    
+    <span><i class="fas fa-arrow-circle-down"></i></span>
+    <div class="flow-unit">
+        <mat-slide-toggle (change)="filterChange()" [formControl]="flowForm.get('authStatus')">授权审稿人员</mat-slide-toggle>
+        <button mat-icon-button routerLink="/admin/admin-person">
+            <span><i class="fas fa-external-link-square-alt"></i></span>
+        </button>
+    </div>
+    
+    <span><i class="fas fa-arrow-circle-down"></i></span>
+    <div class="flow-unit">
+        <mat-slide-toggle (change)="filterChange()" [formControl]="flowForm.get('classStatus')">开始分类作品</mat-slide-toggle>
+        <button mat-icon-button routerLink="/admin/admin-edit">
+            <span><i class="fas fa-external-link-square-alt"></i></span>
+        </button>
+    </div>
+   
+    <span><i class="fas fa-arrow-circle-down"></i></span>
+    <div class="flow-unit">
+        <mat-slide-toggle (change)="filterChange()" [formControl]="flowForm.get('editStatus')">开始审理作品</mat-slide-toggle>
+        <button mat-icon-button routerLink="/admin/admin-edit">
+            <span><i class="fas fa-external-link-square-alt"></i></span>
+        </button>
+    </div>
+    
+    <span><i class="fas fa-arrow-circle-down"></i></span>
+    <div class="flow-unit">
+        <p>导出优秀作品</p>
+        <button mat-icon-button routerLink="/admin/admin-works">
+            <span><i class="fas fa-external-link-square-alt"></i></span>
+        </button>
+    </div>
+    
+    <span><i class="fas fa-arrow-circle-down"></i></span>
+    <div class="flow-unit">
+        <p>恢复作品状态</p>
+        <button mat-icon-button routerLink="/admin/admin-works">
+            <span><i class="fas fa-external-link-square-alt"></i></span>
+        </button>
+    </div>
+    
+    <span><i class="fas fa-arrow-circle-down"></i></span>
+    <app-primary-button buttonStr="结束"></app-primary-button>
+</form>
+<app-progress-circle [isShow]="isProgressCircleShow"></app-progress-circle>

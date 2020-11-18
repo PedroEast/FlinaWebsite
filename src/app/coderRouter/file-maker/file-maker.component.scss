@@ -1,0 +1,61 @@
+@import "src/styles.scss";
+
+mat-card{
+    height: 100%;
+    padding: 16px;
+    border-radius: 4px;
+    mat-card-header{
+        @include flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        div{
+            @include flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            align-items: flex-start;
+            .refresh{
+            }
+        }
+        .mat-card-subtitle{
+            margin-bottom: 16px;
+        }
+        
+    }
+    mat-card-content{
+        mat-checkbox{
+            padding: 1em;
+        }
+    }
+    
+    ::ng-deep .mat-checkbox-layout {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        cursor: inherit;
+        align-items: baseline;
+        vertical-align: middle;
+        white-space: nowrap;
+        display: inline-flex;
+        display: block;
+    }
+    ::ng-deep .mat-checkbox-inner-container{
+        position: absolute;
+    }
+    ::ng-deep .mat-checkbox-label {
+        
+        display: block;
+        width: 100%;
+        line-height: 9em;
+        text-align: center;
+        background-color: $card-bg;
+        color: white;
+        border-bottom-right-radius: 35px;
+        /* padding-left: 24px; */
+        /* margin: auto; */
+      
+    }
+        
+    
+}

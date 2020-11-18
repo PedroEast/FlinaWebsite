@@ -1,0 +1,20 @@
+<div *ngIf="isEditBlocksShow" class="edit-blocks">
+    <div class="edit-block" (click)="editBlockClick($event, 'waitEdit')"> 
+        分类作品 {{waitEdit.length}}
+    </div>
+
+    <div class="edit-block" (click)="editBlockClick($event, 'ancient')">
+        古典诗词审理 {{ancient.length}}
+    </div>
+    
+    <div class="edit-block" (click)="editBlockClick($event, 'modern')">
+        现代诗审理 {{modern.length}}
+    </div>
+    
+    <div class="edit-block" (click)="editBlockClick($event, 'article')">
+        文章审理 {{article.length}}
+    </div>
+</div>
+
+<app-admin-edit-preview *ngIf="!isEditBlocksShow" [datas]="waitEditDatas" [scence]="scence"></app-admin-edit-preview>  
+<app-progress-circle [isShow]="isProgressCircleShow"></app-progress-circle>

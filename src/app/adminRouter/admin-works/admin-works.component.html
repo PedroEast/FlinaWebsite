@@ -1,0 +1,86 @@
+
+<div class="count">
+    <div class="works-count">
+        作品总数
+        <span>{{worksCount}}</span>
+    </div>
+    <div class="submit-count">
+        已投稿作品总数
+        <span>{{submitWorksCount}}</span>
+    </div>
+    <div>
+        已选择作品总数
+        <span>{{ids.length}}</span>
+    </div>
+</div>
+
+<mat-divider></mat-divider>
+
+<form class="select-tool" [formGroup]="filterForm">
+    <mat-checkbox [formControl]="filterForm.get('all')" (change)="filterChange()">全选</mat-checkbox>
+    <mat-checkbox [formControl]="filterForm.get('submit')" (change)="filterChange()">已投稿</mat-checkbox>
+    <mat-checkbox [formControl]="filterForm.get('enable')" (change)="filterChange()">可修改</mat-checkbox>
+    <mat-checkbox [formControl]="filterForm.get('waitEdit')" (change)="filterChange()">待审理</mat-checkbox>
+     <mat-form-field>
+        <mat-select placeholder="作品体裁" [formControl]="filterForm.get('style')" (change)="filterChange()">
+            <mat-option *ngFor="let item of styleEnum" [value]="item">{{item}}</mat-option>  
+        </mat-select>
+      </mat-form-field>
+     <mat-form-field>
+        <input matInput [matDatepicker]="start" placeholder="开始日期" [formControl]="filterForm.get('startTime')" (change)="filterChange()">
+        <mat-datepicker-toggle matSuffix [for]="start"></mat-datepicker-toggle>
+        <mat-datepicker touchUi #start></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [matDatepicker]="end" placeholder="结束日期" [formControl]="filterForm.get('endTime')" (change)="filterChange()">
+        <mat-datepicker-toggle matSuffix [for]="end"></mat-datepicker-toggle>
+        <mat-datepicker touchUi #end></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+        <input type="number" matInput placeholder="每人限投" [formControl]="filterForm.get('limited')" (change)="filterChange()">
+      </mat-form-field>
+</form>
+
+<div>
+    <button mat-button (click)="setWorksStatus('waitEdit', true)">设为待审理</button>
+    <button mat-button (click)="setWorksStatus('waitEdit', false)">设为待选取</button>
+    <button mat-button (click)="setWorksStatus('enable', false)">禁止修改</button>
+    <button mat-button (click)="setWorksStatus('enable', true)">允许修改</button>
+    <button mat-button (click)="export()">导出选择作品</button>
+</div>
+<div id="poetry-list" *ngFor="let data of tableData">
+    <div class="poetry-item">
+        <div class="poetry-title-first-letter">{{data.title[0]}}</div>
+        <div class="poetry-block">
+            <div class="poetry-overview">
+                <div class="poetry-title">{{data.title}}</div>
+                <div *ngIf="!isModify(data.latestModifyTime)" class="poetry-time">{{ data.createdTime | date: 'yyyy-MM-dd'}}</div>
+                <div *ngIf="isModify(data.latestModifyTime)" class="poetry-time">{{ data.latestModifyTime  | date: 'yyyy-MM-dd'}}</div>
+            </div>
+            <div class="poetry-other">
+                
+                <div class="poetry-status">
+                    <span>{{data.style}}</span>
+                    <span>{{data.enable ? "可修改" : "不可修改"}}</span>
+                    <span>{{data.submit ? "已投稿" : "未投稿"}}</span>
+                    <span>{{data.waitEdit ? "待审理" : "待选取"}}</span>
+                    <span>{{data.authorStuId}}</span>
+                </div>
+                <!-- <div class="actions">
+                    <button *ngIf="data.enable" mat-button (click)="modify($event, data.id)">
+                        修改
+                    </button>
+                    <button *ngIf="data.enable" mat-button (click)="delete($event, data.id)">
+                        删除
+                    </button>
+                
+                </div> -->
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+    </div>
+    
+</div>
+
+
+<app-progress-circle [isShow]="isProgressCircleShow"></app-progress-circle>

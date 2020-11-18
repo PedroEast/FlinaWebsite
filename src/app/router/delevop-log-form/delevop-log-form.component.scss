@@ -1,0 +1,32 @@
+.actions{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.input-with-clear {
+    width: 100%;
+    padding: 10px;
+    position: relative;
+    .input-text{
+        width: 100%;
+        color: #000;
+        border: 2px solid #000;
+        border-radius: 4px 20px 20px 4px;
+        outline: none;
+        padding: 12px 15px;
+    }
+    .clear-btn {
+        position: absolute;
+        right: 20px;
+        top: 12px;
+    }
+}
+.input-with-options{
+    width: 100%;
+    padding: 10px;
+    mat-select{
+        width: 150px;
+        margin-left: 15px;
+    }
+}

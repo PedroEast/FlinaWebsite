@@ -1,0 +1,125 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/cdk/overlay-prebuilt.css';
+
+$white: #ffffff;
+$black: #000000;
+$white-mask: rgba(#ffffff, 0.4);
+$black-mask: rgba(#000000, 0.4);
+$transparent: rgba(#ffffff, 0);
+$grey: #686868;
+// cb997e,eddcd2,fff1e6,f0efeb,ddbea9,a5a58d,b7b7a4
+$first: #cb997e;
+$second: #eddcd2;
+$third: #fff1e6;
+$forth: #f0efeb;
+$fifth: #ddbea9;
+$sixth: #a5a58d;
+$seventh: #b7b7a4; 
+$link: #6CC4F1;
+$left-side-bg: #273747;
+$main-bg: #2e3f51;
+$card-bg: #212c38;
+
+
+
+
+@mixin scrollBarStyle($width) {
+    &::-webkit-scrollbar {
+        @if $width == 0 {
+            display: none;
+        }@else {
+            width: $width + px;
+        }
+    }    
+    &::-webkit-scrollbar-track {
+        background-color: #003300;
+    }  
+    &::-webkit-scrollbar-thumb {
+        background-color: #3DB6A4;
+    }
+    &::-webkit-scrollbar-button:start {
+        // background: url(./imgs/up.png) no-repeat;
+        // background-size: 12px 12px;
+    }
+    &::-webkit-scrollbar-button:end {
+        // background: url(./imgs/down.png) no-repeat;
+        // background-size: 12px 12px;
+    }    
+}
+@mixin hover() {
+    &:hover {
+        // transform: scale(1.1);
+        cursor: pointer;
+    }    
+}
+@mixin flex {
+    
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex; /* Safari */
+    display: flex;
+}
+@mixin translate($x, $y) {
+    -webkit-transform: translate($x, $y);   
+    -moz-transform: translate($x, $y);   
+    -ms-transform: translate($x, $y);   
+    -o-transform: translate($x, $y);   
+    transform: translate($x, $y);   
+}
+
+*{
+    user-select: none;
+    list-style: none;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box; /* Firefox */
+    -webkit-box-sizing: border-box; /* Safari */
+    @include scrollBarStyle(0);
+}
+html, body { 
+    height: 100%; 
+    margin: 0; 
+    padding: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+    @include scrollBarStyle(0);
+}
+input {
+    -webkit-user-select:text !important;
+}
+ul, p{
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    background-color: inherit;
+}
+
+a:link{
+    color:inherit;
+    text-decoration: none; 
+    background-color: inherit;
+}
+a:visited{
+    color:inherit;
+    text-decoration: underline; 
+    background-color: inherit;
+}
+a:hover{
+    color:#2bfafa;
+    text-decoration: none; 
+    background-color: inherit;
+    // transform: scale(1.1);
+    // transition: 0.2s;
+}
+a:actived{
+    color:inherit;
+    text-decoration: none; 
+    background-color: inherit;
+}
+
+
+
+

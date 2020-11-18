@@ -1,0 +1,18 @@
+<div id="header">
+    <button id="menu" mat-icon-button (click)="menu($event)">
+        <img src="http://dongqinglin.cn/assets/menu.svg" alt="更多">
+    </button>
+    <ul class="first-nav">
+        <li (click)="nav($event)" *ngFor="let navLink of navList"><a [routerLink]="navLink.linkRouter">{{navLink.linkName}}</a></li>
+        <li id="user-block">
+            <button id="user-icon" mat-icon-button (click)="mine()">
+                <img src="http://dongqinglin.cn/assets/account_circle.svg" alt="我的">
+            </button>
+            <span id="user-little-block">
+                <span id="user-name">{{user.username}}</span>
+                <span id="user-status-text">status<div id="user-status" [class.green-circle]="user.enable"></div></span>
+            </span>
+        </li>
+    </ul>
+</div>
+<mat-divider></mat-divider>

@@ -1,0 +1,52 @@
+@import "src/styles.scss";
+
+
+.green-circle {
+    background-color: green !important;
+}
+
+#user-block{
+    display: none;
+}
+
+@media screen and (max-width: 480px) {
+    #user-block{
+        height: 10vh;
+        width: 100%;
+        @include flex();
+        display: flex !important;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        #user-icon {
+            font-size: 20pt;
+            line-height: 100%;
+            margin-left: 15px;
+            img{
+                height: 34px;
+            }
+        }
+
+        #user-little-block {
+            @include flex;
+            flex-direction: column;
+            margin-left: 15px;
+            #user-name {
+
+            }
+            #user-status-text {
+                font-size: 10px;
+            }
+            #user-status {
+                display: inline-block;
+                margin-left: 2px;
+                width: 5px;
+                height: 5px;
+                border-radius: 50%;
+                background-color: orange;
+            }
+        }
+    }
+}
+
+

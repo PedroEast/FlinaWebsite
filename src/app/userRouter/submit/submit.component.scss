@@ -1,0 +1,29 @@
+@import "src/styles.scss";
+
+
+.other{
+    padding: 15px;
+    width: calc(100vw - 144px);
+    padding: 15px;
+    
+
+    form {
+        width: 100%;
+        
+        .buttons{
+            width: 100%;
+            display: flex;
+            app-primary-button {
+                width: 100%;
+                margin: 0 20px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .other {
+        width: 100vw;
+        padding-bottom: 58px;
+    }
+}

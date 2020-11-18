@@ -1,0 +1,144 @@
+@import "src/styles.scss";
+
+
+.green-circle {
+    background-color: green !important;
+}
+
+#app{
+    width: 100vw;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background-color: $white;
+    @include scrollBarStyle(0);
+    #main{
+        width: 100vw;
+        height: 90vh;
+        margin-top: 10vh;
+        overflow: scroll;
+    }
+
+    #header{
+        width: 100vw;
+        height: 10vh;
+        background-color: $white;
+        position: fixed;
+        z-index: 9999;
+        ul{
+            
+            width: 100%;
+            height: 100%;
+            @include flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 1em;
+            color: $black;
+            background-color: $white;
+            li{
+                margin-right: 1em;
+                padding: 4px;
+                border-radius: 4px;
+                a {
+                    display: block;
+                    width: 100%;
+                    height: 45px;
+                    line-height: 45px;
+                    text-align: center;
+                    padding: 0 20px;
+                }
+                a:hover {
+                    color: inherit;
+                }
+            }
+            li:hover {
+                background-color: $second;
+            }
+           
+            #user-block{
+                position: fixed;
+                z-index: 9999;
+                right: 20px;
+                height: 10vh;
+                width: auto;
+                @include flex();
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                padding-right: 10px;
+                #user-icon {
+                    font-size: 20pt;
+                    line-height: 100%;
+                }
+    
+                #user-little-block {
+                    @include flex;
+                    flex-direction: column;
+                    #user-name {
+    
+                    }
+                    #user-status-text {
+                        font-size: 4pt;
+                    }
+                    #user-status {
+                        display: inline-block;
+                        margin-left: 2px;
+                        width: 5px;
+                        height: 5px;
+                        border-radius: 50%;
+                        background-color: orange;
+                    }
+                }
+            }
+        }
+    }
+
+    #footer{
+        width: 100vw;
+        // height: 30vh;
+        background-color: $white;
+        ul{
+            
+            width: 100%;
+            height: 100%;
+            @include flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 2em;
+            color: $black;
+            background-color: $white;
+            
+            li{
+                padding-top: 2em;
+            }
+        }
+    }
+    
+}
+
+
+@media screen and (max-width: 480px) {
+    
+    #app{
+
+        #header{
+            a{
+                font-size: 13px;
+            }
+            
+            #user-block{
+              display: none !important;
+            }
+        }
+
+        #footer{
+            display: none;
+            a {
+                font-size: 13px;
+            }
+        }
+        
+    }
+}

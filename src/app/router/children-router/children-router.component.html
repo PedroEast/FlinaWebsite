@@ -1,0 +1,29 @@
+<div id="app">
+    <div id="header">
+        
+        <ul>
+            <li *ngFor="let navLink of headerLinks"><a [routerLink]="navLink.linkRouter">{{navLink.linkName}}</a></li>
+            <li id="user-block">
+                <button id="user-icon" mat-icon-button (click)="mine()">
+                    <span><i class="fas fa-user"></i></span>
+                </button>
+                <span id="user-little-block">
+                    <span id="user-name">{{user.username}}</span>
+                    <span id="user-status-text">status<div id="user-status" [class.green-circle]="user.enable"></div></span>
+                </span>
+            </li>
+        </ul>
+        <mat-divider></mat-divider>
+    </div>
+    
+    <div id="main">
+        <router-outlet></router-outlet>
+    </div>
+    
+    <div id="footer">
+        <mat-divider></mat-divider>
+        <ul>
+            <li *ngFor="let navLink of footerLinks"><a [routerLink]="navLink.linkRouter">{{navLink.linkName}}</a></li>
+        </ul>
+    </div>
+</div>

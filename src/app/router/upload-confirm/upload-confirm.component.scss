@@ -1,0 +1,46 @@
+@import "src/styles.scss";
+
+#container{
+    position: relative;
+    @include scrollBarStyle(0);
+    @include flex();
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 120px;
+    #uploadIcon{
+        position: absolute;
+        top: 0;
+        display: block;
+        width: 100%;
+        border-radius: 16px;
+        height: 60px;
+        font-size: 4em;
+        text-align: center;
+        cursor: pointer;
+    }
+    
+    #file{
+        display: none;
+    }
+
+    #file-list{
+        position: absolute;
+        top: 60px;
+        overflow-y: scroll;
+        @include flex();
+        flex-direction: column;
+        justify-content:center;
+        align-items: flex-start;
+        @include scrollBarStyle(0);
+    }
+}
+
+
+
+.actions{
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}

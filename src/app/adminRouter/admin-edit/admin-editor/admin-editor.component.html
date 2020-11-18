@@ -1,0 +1,48 @@
+
+<div class="poetry-block">
+    <div class="poetry-info" *ngIf="data">
+        <h2 class="poetry-title">{{data.title}}</h2>
+        <mat-divider></mat-divider>
+        <p class="poetry-status">
+            <span *ngIf="!isModify(data.latestModifyTime)" class="poetry-time">{{data.createdTime | date: 'yyyy-MM-dd'}}</span>
+            <span *ngIf="isModify(data.latestModifyTime)" class="poetry-time">{{data.latestModifyTime | date: 'yyyy-MM-dd'}}</span>
+            <span>{{data.style}}</span>
+            <span>{{data.enable ? "可修改" : "不可修改"}}</span>
+            <span>{{data.submit ? "已投稿" : "未投稿"}}</span>
+            <span>{{data.editorScore ? data.editorScore : "未评分" }}</span>
+        </p>
+        <mat-divider></mat-divider> 
+    </div>
+    
+    <div id="poetry-content"></div>
+</div>
+
+<!-- <app-circle-button *ngIf="data.enable" buttonStr="fas fa-pen-nib" (click)="modify()"></app-circle-button>
+<app-circle-button *ngIf="data.enable" bottom="120px" buttonStr="fas fa-trash-alt" (click)="delete()"></app-circle-button> -->
+
+<div *ngIf="!isEdit" id="set-style-tool-bar" class="admin-tool-bar">
+    <div class="back" (click)="back($event)">
+        <span><i class="fas fa-chevron-left"></i></span>
+    </div>
+    <div class="function">
+        <div (click)="setStyle($event,'古典诗词')">设为古典</div>
+        <div (click)="setStyle($event,'现代诗')">设为现代</div>
+        <div (click)="setStyle($event,'文章')">设为文章</div>
+    </div>
+    <div class="next" (click)="next($event)">
+        <span><i class="fas fa-chevron-right"></i></span>
+    </div>
+</div>
+
+<div *ngIf="isEdit" id="set-score-tool-bar" class="admin-tool-bar">
+    <div class="number-button" *ngFor="let number of numbers" (click)="setScore($event, number)">{{number}}</div>
+    <div class="back number-button" (click)="back($event)">
+        <span><i class="fas fa-chevron-left"></i></span>
+    </div>
+    <div class="number-button" (click)="setScore($event, 10)">{{10}}</div>
+    <div class="next number-button" (click)="next($event)">
+        <span><i class="fas fa-chevron-right"></i></span>
+    </div>
+</div>
+
+<app-progress-circle [isShow]="isProgressCircleShow"></app-progress-circle>

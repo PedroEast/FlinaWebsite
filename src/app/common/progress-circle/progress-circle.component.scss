@@ -1,0 +1,21 @@
+
+.mock-bg{
+    z-index:9000;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(0, 0, 0, 0.8);
+    opacity: 60%;
+    // 全局进度圈
+    .progress-position{
+        z-index:9001;
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+    }
+}

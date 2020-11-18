@@ -1,0 +1,66 @@
+
+    <div id="poetry-list">
+        <div *ngIf="!tableData" class="poetry-item" (click)="showDetail()">
+            <div class="poetry-title-first-letter">示</div>
+            <div class="poetry-block">
+                <div class="poetry-overview">
+                    <div class="poetry-title">示例作品:雨霖铃</div>
+                    <div class="poetry-time">23:00</div>
+                </div>
+                <div class="poetry-other">
+                    
+                    <div class="poetry-status">
+                        <span>古体</span>
+                        <span>可修改</span>
+                        <span>已投稿</span>
+                    </div>
+                    <div class="actions">
+                        <button mat-button (click)="modify($event)">
+                            修改
+                        </button>
+                        <button mat-button (click)="delete($event)">
+                            删除
+                        </button>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+    </div>
+
+    <div id="poetry-list" *ngFor="let data of tableData">
+        <div class="poetry-item" (click)="showDetail($event, data.id)">
+            <div class="poetry-title-first-letter">{{data.title[0]}}</div>
+            <div class="poetry-block">
+                <div class="poetry-overview">
+                    <div class="poetry-title">{{data.title}}</div>
+                    <div *ngIf="!isModify(data.latestModifyTime)" class="poetry-time">{{ data.createdTime | date: 'yyyy-MM-dd'}}</div>
+                    <div *ngIf="isModify(data.latestModifyTime)" class="poetry-time">{{ data.latestModifyTime  | date: 'yyyy-MM-dd'}}</div>
+
+                </div>
+                <div class="poetry-other">
+                    
+                    <div class="poetry-status">
+                        <span>{{data.style}}</span>
+                        <span>{{data.enable ? "可修改" : "不可修改"}}</span>
+                        <span>{{data.submit ? "已投稿" : "未投稿"}}</span>
+                    </div>
+                    <div class="actions">
+                        <button *ngIf="data.enable" mat-button (click)="modify($event, data.id)">
+                            修改
+                        </button>
+                        <button *ngIf="data.enable" mat-button (click)="delete($event, data.id)">
+                            删除
+                        </button>
+                    
+                    </div>
+                </div>
+            </div>
+            <mat-divider></mat-divider>
+        </div>
+        
+    </div>
+    <div *ngIf="tableData.length < 3" id="placeholder">没有更多了。。。赶快丰富你的原创库吧！</div>
+
+    <app-progress-circle [isShow]="isProgressCircleShow"></app-progress-circle>

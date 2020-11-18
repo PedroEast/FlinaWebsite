@@ -1,0 +1,89 @@
+@import "src/styles.scss";
+
+#poetry-list {
+    .poetry-item {
+        display: flex;
+        height: 10vh;
+        width: calc(100vw - 147px);
+        justify-content: flex-start;
+        align-items: center;
+        padding: 0 15px;
+        cursor: pointer;
+        .poetry-title-first-letter{
+            font-size: 2em;
+            margin: 0 15px 0 0;
+            border: 1px solid;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            border-radius: 4px;
+            background: $grey;
+            color: $white;
+        }
+        .poetry-block{
+            display: flex;
+            flex-direction: column;
+            width: calc(100% - 70px);
+            .poetry-overview {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                margin-top: 6px;
+                .poetry-title {
+                    font-size: 1.5em;
+                }
+                .poetry-time {
+                    font-size: 10px;
+                    color: $grey;
+                }
+            }
+            .poetry-other {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                .poetry-status {
+                    font-size: 10px;
+                    color: $grey;
+                    span {
+                        margin-right: 5px;
+                    }
+                }
+
+                .actions{
+                    display: flex;
+                    
+                    button{
+                        height: 20px;
+                        font-size: 10px;
+                        line-height: 10px;
+                        margin-right: -19px;
+                    }
+                }
+            }
+        }
+    }
+    
+}
+#placeholder{
+    position: fixed;
+    z-index: 0;
+    top: 50%;
+    left: 42%;
+    color: $grey;
+}
+
+@media screen and (max-width: 480px) {
+    button{
+        display: none !important;
+    }
+    .poetry-item {
+        width: 100vw !important;
+        .poetry-overview {
+            
+        }
+    }
+    #placeholder{
+        left: 14% !important;
+    }
+}
